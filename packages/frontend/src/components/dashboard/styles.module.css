@@ -1,0 +1,33 @@
+
+.header {
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+}
+
+.logo {
+   position: absolute;
+   content: '';
+   top: 5px;
+   left: 10px;
+}
+
+.content_wrapper {
+   padding: 0 24px 24px;
+}
+
+.sider {
+    width: 200px;
+}
+
+.side_menu {
+   height: 100%;
+   border-right: 0;
+}
+
+.breadcrumb {
+   text-align: left;
+}
+
+.content {
+}

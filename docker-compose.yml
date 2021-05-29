@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./packages/backend
+      dockerfile: Dockerfile.dev
+    env_file:
+     - ./packages/backend/.env
+    ports:
+      - 3001:3001
+    volumes:
+      - ./packages/backend/:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./packages/frontend
+      dockerfile: Dockerfile.dev
+    env_file:
+     - ./packages/frontend/.env
+    ports:
+      - 8000:8000
+    volumes:
+      - ./packages/frontend/:/app
+      - /app/node_modules
+
+  redis:
+    image: redis:6.2-rc1
+    environment:
+      REDIS_PASSWORD: password
+
+  redis_commander:
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis

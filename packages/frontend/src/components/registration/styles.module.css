@@ -1,0 +1,9 @@
+.reg_form_wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.reg_form {
+    min-width: 500px;
+}
