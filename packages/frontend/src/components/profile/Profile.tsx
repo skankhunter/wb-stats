@@ -26,7 +26,7 @@ export const Profile: React.FC = () => {
    const [isDisabled, setDisabled] = useState(true);
    const [form] = Form.useForm();
    const database = useFirebaseDatabase();
-   const { user, updateLocalUserData } = useAuth();
+   const { user, updateLocalUserData, updateEmail} = useAuth();
    const { email, firstName, lastName, patronymic, phone, wbAPIKey } = user;
    const initialValues = {
       email,
@@ -43,9 +43,14 @@ export const Profile: React.FC = () => {
    };
 
    const onFinish = (data: FormProps) => {
+      const values = getFormValues(data);
+      if (values.email) {
+         updateEmail(values.email)
+      }
+      
       database
          .users(user.uid)
-         .update(getFormValues(data))
+         .update(values)
          .then(() => {
             updateLocalUserData();
             setDisabled((prev) => !prev);

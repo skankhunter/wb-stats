@@ -1,0 +1,22 @@
+.info_title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.info_item {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.info_item_result {
+    font-size: 16px;
+    font-weight: 600;
+}

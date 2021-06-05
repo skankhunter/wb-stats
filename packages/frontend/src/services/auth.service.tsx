@@ -98,9 +98,7 @@ function useProvideAuth() {
          });
    };
    const sendPasswordResetEmail = (email: string) => {
-      return firebase
-         .auth()
-         .sendPasswordResetEmail(email)
+      return firebase.auth().sendPasswordResetEmail(email);
    };
    const confirmPasswordReset = (code, password) => {
       return firebase
@@ -110,6 +108,11 @@ function useProvideAuth() {
             return true;
          });
    };
+
+   const updateEmail = (email: string) => {
+      return firebase.auth().currentUser.updateEmail(email);
+   };
+
    const updateLocalUserData = () => {
       return database
          .users(user.uid)
@@ -158,5 +161,6 @@ function useProvideAuth() {
       sendPasswordResetEmail,
       confirmPasswordReset,
       updateLocalUserData,
+      updateEmail,
    };
 }

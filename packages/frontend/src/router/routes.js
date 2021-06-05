@@ -6,6 +6,7 @@ import { Registration } from "../components/registration/Registration";
 import { Profile } from "../components/profile/Profile";
 import { Main } from "../components/main/Main";
 import { Dashboard } from "../components/dashboard/Dashboard";
+import { Calculator } from "../components/calculator/Calculator";
 import { ResetPassword } from "../components/reset-pass/ResetPassword";
 
 
@@ -61,5 +62,12 @@ export const protectedRoutes = [
       routes: [
         
       ]
+   },
+   {
+      path: "/calc",
+      exact: true,
+      name: "Calculator",
+      component: Calculator,
+      routes: []
    },
 ];

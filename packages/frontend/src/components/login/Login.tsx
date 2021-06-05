@@ -8,6 +8,7 @@ import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 import styles from "./styles.module.css";
+import { FIREBASE_ERRORS } from "../../utils/errors";
 
 export type LoginFormData = {
    email: string;
@@ -22,6 +23,7 @@ export const Login: React.FC = () => {
    const auth = useAuth();
    const isLoading = useSelector(selectLoadingStatus);
    const [needRemember, setRemember] = useState(true);
+   const [errorCode, setErrorCode] = useState('');
 
    const onFinish = (data: LoginFormData) => {
       const { email, password } = data;
@@ -33,6 +35,7 @@ export const Login: React.FC = () => {
          },
          (error) => {
             dispatch(loading(false));
+            setErrorCode(error.code)
 
             //error
             console.log(error);
@@ -49,6 +52,8 @@ export const Login: React.FC = () => {
          >
             <Form.Item
                name="email"
+               validateStatus={errorCode && "error"}
+               help={FIREBASE_ERRORS[errorCode]}
                rules={[
                   {
                      type: "email",
@@ -57,13 +62,11 @@ export const Login: React.FC = () => {
                   { required: true, message: "Введите email" },
                ]}
             >
-               <Input
-                  prefix={<UserOutlined />}
-                  placeholder="Email"
-               />
+               <Input prefix={<UserOutlined />} placeholder="Email" />
             </Form.Item>
             <Form.Item
                name="password"
+               validateStatus={errorCode && "error"}
                rules={[{ required: true, message: "Введите пароль" }]}
             >
                <Input
@@ -79,9 +82,7 @@ export const Login: React.FC = () => {
                   </Checkbox>
                </Form.Item>
 
-               <Link to="/reset">
-                  Забыл пароль
-               </Link>
+               <Link to="/reset">Забыл пароль</Link>
             </Form.Item>
 
             <Form.Item>
