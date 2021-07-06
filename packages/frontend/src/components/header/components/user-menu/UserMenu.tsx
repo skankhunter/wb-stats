@@ -13,13 +13,13 @@ import {
 import styles from "./styles.module.css";
 
 export const UserMenu: React.FC = () => {
-   const auth = useAuth();
+   // const auth = useAuth();
    const history = useHistory();
 
    const onClick = () => {
-      auth.signout().then(() => {
-         history.push("/");
-      });
+      // auth.signout().then(() => {
+      //    history.push("/");
+      // });
    };
 
    const menu = (

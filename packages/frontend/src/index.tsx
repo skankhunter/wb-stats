@@ -10,15 +10,7 @@ import * as serviceWorker from "./serviceWorker";
 import { store } from "./store/store";
 
 ReactDOM.render(
-   <ProvideDatabse>
-      <ProvideAuth>
-         <Provider store={store}>
-            <BrowserRouter>
-               <App />
-            </BrowserRouter>
-         </Provider>
-      </ProvideAuth>
-   </ProvideDatabse>,
+   <App />,
    document.getElementById("root")
 );
 

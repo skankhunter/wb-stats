@@ -65,7 +65,7 @@ const getUserData = (userData: firebase.User) => {
 
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
-   const [user, setUser] = useState(null);
+   const [user, setUser] = useState({});
    const [loading, setLaoding] = useState(true);
    const database = useFirebaseDatabase();
 
@@ -114,13 +114,13 @@ function useProvideAuth() {
    };
 
    const updateLocalUserData = () => {
-      return database
-         .users(user.uid)
-         .once("value")
-         .then((snapshot) => {
-            const data = snapshot.val();
-            setUser({ ...user, ...data });
-         });
+      // return database
+      //    .users(user.uid)
+      //    .once("value")
+      //    .then((snapshot) => {
+      //       const data = snapshot.val();
+      //       setUser({ ...user, ...data });
+      //    });
    };
 
    // Subscribe to user on mount

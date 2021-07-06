@@ -8,15 +8,15 @@ export const isLoadingHoc = (
    loadingMessage: string
 ) => {
    function HOC(props) {
-      const auth = useAuth();
+      // const auth = useAuth();
 
-      useEffect(() => {
-         if (!auth.loading) {
-            setLoading(false);
-         }
-      }, [auth.loading]);
+      // useEffect(() => {
+      //    if (!auth.loading) {
+      //       setLoading(false);
+      //    }
+      // }, [auth.loading]);
 
-      const [isLoading, setLoading] = useState(true);
+      const [isLoading, setLoading] = useState(false);
       const setLoadingState = (isComponentLoading: boolean) => {
          setLoading(isComponentLoading);
       };

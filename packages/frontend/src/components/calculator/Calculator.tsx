@@ -36,7 +36,6 @@ export const Calculator = () => {
          top: 1000,
          behavior: "smooth",
       });
-      console.log(data);
    };
    return (
       <div className={styles.calc_form_wrapper}>

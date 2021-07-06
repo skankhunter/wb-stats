@@ -10,7 +10,7 @@ const { Header } = Layout;
 
 export const HeaderLayout = () => {
    const [path, setPath] = useState('');
-   const auth = useAuth();
+   // const auth = useAuth();
    const location = useLocation()
 
    useEffect(() => {
@@ -20,15 +20,15 @@ export const HeaderLayout = () => {
    return (
       <Header className={styles.header}>
          <div className={styles.logo} />
-         <Menu theme="dark" mode="horizontal" selectedKeys={[path]}>
+         {/* <Menu theme="dark" mode="horizontal" selectedKeys={[path]}>
             <Menu.Item key="dashboard">
                <Link to="/dashboard">Dashboard</Link>
             </Menu.Item>
             <Menu.Item key="calc">
                <Link to="/calc">Калькулятор</Link>
             </Menu.Item>
-         </Menu>
-         {auth.user && <UserMenu />}
+         </Menu> */}
+         {/* {auth.user && <UserMenu />} */}
       </Header>
    );
 };

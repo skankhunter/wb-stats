@@ -24,7 +24,7 @@ type RegFormData = {
 export const Registration: React.FC = () => {
    const dispatch = useAppDispatch();
    const history = useHistory();
-   const auth = useAuth();
+   // const auth = useAuth();
    const database = useFirebaseDatabase();
    const [isRegSucceed, setRegSucceed] = useState(false);
    const [form] = Form.useForm();
@@ -42,27 +42,27 @@ export const Registration: React.FC = () => {
       const roles = [ROLES.USER];
       dispatch(loading(true));
 
-      auth
-         .signup(email, password, username, phone)
-         .then((user) => {
-            dispatch(loading(false));
-            setRegSucceed(true);
-            return database.users(user.uid).set({
-               username,
-               password,
-               email,
-               firstName,
-               lastName,
-               patronymic: patronymic || null,
-               phone,
-               roles,
-            });
-         })
-         .catch((error) => {
-            dispatch(loading(false));
+      // auth
+      //    .signup(email, password, username, phone)
+      //    .then((user) => {
+      //       dispatch(loading(false));
+      //       setRegSucceed(true);
+      //       return database.users(user.uid).set({
+      //          username,
+      //          password,
+      //          email,
+      //          firstName,
+      //          lastName,
+      //          patronymic: patronymic || null,
+      //          phone,
+      //          roles,
+      //       });
+      //    })
+      //    .catch((error) => {
+      //       dispatch(loading(false));
 
-            console.log(error);
-         });
+      //       console.log(error);
+      //    });
    };
 
    return (

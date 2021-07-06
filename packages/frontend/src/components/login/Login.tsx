@@ -20,7 +20,7 @@ const to = { pathname: "/dashboard" };
 export const Login: React.FC = () => {
    const dispatch = useAppDispatch();
    const history = useHistory();
-   const auth = useAuth();
+   // const auth = useAuth();
    const isLoading = useSelector(selectLoadingStatus);
    const [needRemember, setRemember] = useState(true);
    const [errorCode, setErrorCode] = useState('');
@@ -28,19 +28,19 @@ export const Login: React.FC = () => {
    const onFinish = (data: LoginFormData) => {
       const { email, password } = data;
       dispatch(loading(true));
-      auth.signin(email, password, needRemember).then(
-         (userData) => {
-            dispatch(loading(false));
-            history.replace(to);
-         },
-         (error) => {
-            dispatch(loading(false));
-            setErrorCode(error.code)
+      // auth.signin(email, password, needRemember).then(
+      //    (userData) => {
+      //       dispatch(loading(false));
+      //       history.replace(to);
+      //    },
+      //    (error) => {
+      //       dispatch(loading(false));
+      //       setErrorCode(error.code)
 
-            //error
-            console.log(error);
-         }
-      );
+      //       //error
+      //       console.log(error);
+      //    }
+      // );
    };
 
    return (
